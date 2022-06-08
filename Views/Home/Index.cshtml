@@ -1,0 +1,46 @@
+﻿
+@{
+    var message = "I will be building a media uploading system. The way the system will work is that the user will first be taken to the home page when they arrive on the site. The home page then has this description and options as to what kind of file the user would like to upload. Once the user selects what kind of file they would like to upload, they then need to select the file from their device and upload it by clicking on the submit button. When the user clicks on the file tab it will open up a page which has all the files that the user has uploaded, of any file type, it will also give you an to download or delete any of the available files.When the download button is clicked the item must be downloaded onto the user’s device, and when the delete button is clicked the item must be deleted from the system. The same follows for the image and videos tab accept that they will only have images or videos on their pages respectively. The About Me tab has a little description of me as the creator of this system just so you can get to know a little about me.";
+}
+
+<div class="col-sm-6">
+    <h2>Description</h2>
+    <p>@message</p>
+</div>
+
+
+
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="Selection">
+        <h2>Option Selection</h2>
+        <div class="FileType">
+            Document @Html.RadioButton("fileType", "Document")
+            <br />
+            Image @Html.RadioButton("fileType", "Image")
+            <br />
+            Video @Html.RadioButton("fileType", "Video")
+
+            <br/>
+            <div><input type="file" name="files" /></div>
+
+            <br/>
+            <input type="Submit" id="submit" name="submit" />
+
+            <div>@ViewBag.UploadStatus</div>
+
+        </div>
+    </div>
+
+    
+
+}
+
+
+
+
+
+
+
+
